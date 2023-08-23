@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check-in RBXP</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Informe o nome da pessoa</h1>
+    <input type="text" id="nome" placeholder="Nome da pessoa" required>
+    <button id="buscarDados">Fazer check-in</button>
+    <p id="responseMessage"></p>
+
+    <script>
+        $(document).ready(function() {
+            $("#buscarDados").click(function() {
+                var nome = $("#nome").val();
+
+                // Requisição para buscar dados da pessoa
+                $.post("/buscar", { nome: nome }, function(data) {
+                    $("#responseMessage").text("Evento enviado com sucesso!")/*"Dados buscados: " + JSON.stringify(data));*/
+                });
+            });
+
+            $("#enviarEvento").click(function() {
+                var nome = $("#nome").val();
+
+                // Requisição para enviar evento
+                $.post("/enviar_evento", { nome: nome }, function(response) {
+                    $("#responseMessage").text("Evento enviado: " + response);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -9,14 +9,19 @@
     <input type="text" id="nome" placeholder="Nome da pessoa" required>
     <button id="buscarDados">Fazer check-in</button>
     <p id="responseMessage"></p>
+    <p id="contadorRequisicoes">Total de requisições bem-sucedidas: 0</p>
 
     <script>
         $(document).ready(function() {
+            var contadorRequisicoesCheckIn = 0;
             $("#buscarDados").click(function() {
                 var nome = $("#nome").val();
+                
 
                 // Requisição para buscar dados da pessoa
                 $.post("/buscar", { nome: nome }, function(data) {
+                    contadorRequisicoesCheckIn++;
+                    $("#contadorRequisicoes").text("Total de check-ins bem-sucedidos: " + contadorRequisicoesCheckIn);
                     $("#responseMessage").text("Evento enviado com sucesso!")/*"Dados buscados: " + JSON.stringify(data));*/
                 });
             });

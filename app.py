@@ -3,11 +3,11 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('https://joaojmol.github.io/', methods=['GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def index():
     return render_template('index.html')
 
-@app.route('https://joaojmol.github.io/buscar', methods=['POST'])
+@app.route('/buscar', methods=['POST'])
 def buscar_dados():
     nome = request.form.get('nome')
 

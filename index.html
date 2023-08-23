@@ -19,7 +19,7 @@
                 
 
                 // Requisição para buscar dados da pessoa
-                $.post("https://joaojmol.github.io/buscar", { nome: nome }, function(data) {
+                $.post("/buscar", { nome: nome }, function(data) {
                     contadorRequisicoesCheckIn++;
                     $("#contadorRequisicoes").text("Total de check-ins bem-sucedidos: " + contadorRequisicoesCheckIn);
                     $("#responseMessage").text("Evento enviado com sucesso!")/*"Dados buscados: " + JSON.stringify(data));*/
